@@ -18,7 +18,27 @@
 		B026E3C217481EF400E5178C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B026E3C117481EF400E5178C /* Default-568h@2x.png */; };
 		B026E3C517481EF400E5178C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B026E3C317481EF400E5178C /* MainStoryboard.storyboard */; };
 		B026E3C817481EF400E5178C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B026E3C717481EF400E5178C /* ViewController.m */; };
+		B05F88EA1748235500D3D7AB /* libTheAmazingAudioEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F88E71748233C00D3D7AB /* libTheAmazingAudioEngine.a */; };
+		B05F88ED1748235500D3D7AB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F88EB1748235500D3D7AB /* Accelerate.framework */; };
+		B05F88EE1748235500D3D7AB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F88EC1748235500D3D7AB /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B05F88E61748233C00D3D7AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B05F88E21748233C00D3D7AB /* TheAmazingAudioEngine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4C215CEC1523A7D500D36CAD;
+			remoteInfo = TheAmazingAudioEngine;
+		};
+		B05F88E81748234900D3D7AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B05F88E21748233C00D3D7AB /* TheAmazingAudioEngine.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C215CEB1523A7D500D36CAD;
+			remoteInfo = TheAmazingAudioEngine;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B026E3A817481EF300E5178C /* BionicLooper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BionicLooper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +57,9 @@
 		B026E3C417481EF400E5178C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		B026E3C617481EF400E5178C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B026E3C717481EF400E5178C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B05F88E21748233C00D3D7AB /* TheAmazingAudioEngine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheAmazingAudioEngine.xcodeproj; path = TheAmazingAudioEngine/TheAmazingAudioEngine.xcodeproj; sourceTree = "<group>"; };
+		B05F88EB1748235500D3D7AB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B05F88EC1748235500D3D7AB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +67,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B05F88ED1748235500D3D7AB /* Accelerate.framework in Frameworks */,
+				B05F88EE1748235500D3D7AB /* AudioToolbox.framework in Frameworks */,
+				B05F88EA1748235500D3D7AB /* libTheAmazingAudioEngine.a in Frameworks */,
 				B026E3AC17481EF300E5178C /* UIKit.framework in Frameworks */,
 				B026E3AE17481EF300E5178C /* Foundation.framework in Frameworks */,
 				B026E3B017481EF300E5178C /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +82,9 @@
 		B026E39F17481EF300E5178C = {
 			isa = PBXGroup;
 			children = (
+				B05F88EB1748235500D3D7AB /* Accelerate.framework */,
+				B05F88EC1748235500D3D7AB /* AudioToolbox.framework */,
+				B05F88E21748233C00D3D7AB /* TheAmazingAudioEngine.xcodeproj */,
 				B026E3B117481EF300E5178C /* BionicLooper */,
 				B026E3AA17481EF300E5178C /* Frameworks */,
 				B026E3A917481EF300E5178C /* Products */,
@@ -107,6 +136,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B05F88E31748233C00D3D7AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B05F88E71748233C00D3D7AB /* libTheAmazingAudioEngine.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,6 +158,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B05F88E91748234900D3D7AB /* PBXTargetDependency */,
 			);
 			name = BionicLooper;
 			productName = BionicLooper;
@@ -146,12 +184,28 @@
 			mainGroup = B026E39F17481EF300E5178C;
 			productRefGroup = B026E3A917481EF300E5178C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B05F88E31748233C00D3D7AB /* Products */;
+					ProjectRef = B05F88E21748233C00D3D7AB /* TheAmazingAudioEngine.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B026E3A717481EF300E5178C /* BionicLooper */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B05F88E71748233C00D3D7AB /* libTheAmazingAudioEngine.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTheAmazingAudioEngine.a;
+			remoteRef = B05F88E61748233C00D3D7AB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B026E3A617481EF300E5178C /* Resources */ = {
@@ -180,6 +234,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B05F88E91748234900D3D7AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TheAmazingAudioEngine;
+			targetProxy = B05F88E81748234900D3D7AB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B026E3B417481EF300E5178C /* InfoPlist.strings */ = {
@@ -264,6 +326,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BionicLooper/BionicLooper-Prefix.pch";
+				HEADER_SEARCH_PATHS = TheAmazingAudioEngine/TheAmazingAudioEngine;
 				INFOPLIST_FILE = "BionicLooper/BionicLooper-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -275,6 +338,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BionicLooper/BionicLooper-Prefix.pch";
+				HEADER_SEARCH_PATHS = TheAmazingAudioEngine/TheAmazingAudioEngine;
 				INFOPLIST_FILE = "BionicLooper/BionicLooper-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -300,6 +364,7 @@
 				B026E3CD17481EF400E5178C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

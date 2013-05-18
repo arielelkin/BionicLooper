@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "AEAudioController.h"
 
 @interface ViewController ()
+
+@property AEAudioController *audioController;
 
 @end
 
@@ -17,7 +20,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //AUDIO CONTROLLER SETUP
+    self.audioController = [[AEAudioController alloc]
+                            initWithAudioDescription:[AEAudioController nonInterleavedFloatStereoAudioDescription]
+                            inputEnabled:YES
+                            ];
+    
+    
+    NSError *errorAudioSetup = NULL;
+    BOOL result = [_audioController start:&errorAudioSetup];
+    if ( !result ) {
+        NSLog(@"Error starting audio engine: %@", errorAudioSetup.localizedDescription);
+    }
+
+    
+    
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    //RECEIVER
+//    self.receiver = [[AEPlaythroughChannel alloc] initWithAudioController:self.audioController];
+//    [self.audioController addInputReceiver:self.receiver];
+//    [self.audioController addChannels:@[self.receiver]];
+//    
+//    [self.audioController addInputReceiver:self.receiver];
+
 }
 
 - (void)didReceiveMemoryWarning
