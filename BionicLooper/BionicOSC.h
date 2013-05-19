@@ -17,9 +17,7 @@ protected:
             std::cout << "received OSC message";
             std::cout << m.AddressPattern() << std::endl;
 
-            // example of parsing single messages. osc::OsckPacketListener
-            // handles the bundle traversal.
-            
+           // REC
            if( strcmp( m.AddressPattern(), "/bioniclooper1/rec" ) == 0 ){
 
                 osc::ReceivedMessage::const_iterator arg = m.ArgumentsBegin();

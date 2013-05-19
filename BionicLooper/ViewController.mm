@@ -35,11 +35,15 @@
         NSLog(@"Error starting audio engine: %@", errorAudioSetup.localizedDescription);
     }
 
+    
+    // OSC RECEIVER
     BionicOSCPacketListener listener;
     UdpListeningReceiveSocket s(
                                 IpEndpointName( IpEndpointName::ANY_ADDRESS, PORT ),
                                 &listener );
     s.RunUntilSigInt();
+    
+    //
     
     
     
