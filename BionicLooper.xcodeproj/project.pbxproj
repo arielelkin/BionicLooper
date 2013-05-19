@@ -30,6 +30,8 @@
 		B05F8935174825B800D3D7AB /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B05F892A174825B800D3D7AB /* README.markdown */; };
 		B05F8936174825B800D3D7AB /* TPCircularBuffer+AudioBufferList.c in Sources */ = {isa = PBXBuildFile; fileRef = B05F892B174825B800D3D7AB /* TPCircularBuffer+AudioBufferList.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B05F8937174825B800D3D7AB /* TPCircularBuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = B05F892D174825B800D3D7AB /* TPCircularBuffer.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B05F893D1748E91B00D3D7AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F893C1748E91B00D3D7AB /* QuartzCore.framework */; };
+		B05F89401748E95F00D3D7AB /* TPOscilloscopeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B05F893F1748E95F00D3D7AB /* TPOscilloscopeLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,9 @@
 		B05F892C174825B800D3D7AB /* TPCircularBuffer+AudioBufferList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TPCircularBuffer+AudioBufferList.h"; sourceTree = "<group>"; };
 		B05F892D174825B800D3D7AB /* TPCircularBuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TPCircularBuffer.c; sourceTree = "<group>"; };
 		B05F892E174825B800D3D7AB /* TPCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCircularBuffer.h; sourceTree = "<group>"; };
+		B05F893C1748E91B00D3D7AB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B05F893E1748E95F00D3D7AB /* TPOscilloscopeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPOscilloscopeLayer.h; sourceTree = SOURCE_ROOT; };
+		B05F893F1748E95F00D3D7AB /* TPOscilloscopeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPOscilloscopeLayer.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B05F893D1748E91B00D3D7AB /* QuartzCore.framework in Frameworks */,
 				B05F88ED1748235500D3D7AB /* Accelerate.framework in Frameworks */,
 				B05F88EE1748235500D3D7AB /* AudioToolbox.framework in Frameworks */,
 				B05F88EA1748235500D3D7AB /* libTheAmazingAudioEngine.a in Frameworks */,
@@ -108,6 +114,7 @@
 		B026E39F17481EF300E5178C = {
 			isa = PBXGroup;
 			children = (
+				B05F893C1748E91B00D3D7AB /* QuartzCore.framework */,
 				B05F891C174825B800D3D7AB /* Modules */,
 				B05F88EB1748235500D3D7AB /* Accelerate.framework */,
 				B05F88EC1748235500D3D7AB /* AudioToolbox.framework */,
@@ -174,6 +181,8 @@
 		B05F891C174825B800D3D7AB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B05F893E1748E95F00D3D7AB /* TPOscilloscopeLayer.h */,
+				B05F893F1748E95F00D3D7AB /* TPOscilloscopeLayer.m */,
 				B05F891D174825B800D3D7AB /* AEExpanderFilter.h */,
 				B05F891E174825B800D3D7AB /* AEExpanderFilter.m */,
 				B05F891F174825B800D3D7AB /* AELimiter.h */,
@@ -299,6 +308,7 @@
 				B05F8934174825B800D3D7AB /* AERecorder.m in Sources */,
 				B05F8936174825B800D3D7AB /* TPCircularBuffer+AudioBufferList.c in Sources */,
 				B05F8937174825B800D3D7AB /* TPCircularBuffer.c in Sources */,
+				B05F89401748E95F00D3D7AB /* TPOscilloscopeLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

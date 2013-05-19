@@ -11,11 +11,15 @@
 #import "AEPlaythroughChannel.h"
 #import "AEBlockFilter.h"
 
+#import "TPOscilloscopeLayer.h"
+
 @interface ViewController ()
 
 @property (nonatomic) AEAudioController *audioController;
 @property (nonatomic) AEPlaythroughChannel *receiver;
 @property (nonatomic) AEBlockFilter *looperBlock;
+
+@property (nonatomic) TPOscilloscopeLayer *inputOscilloscope;
 
 @end
 
@@ -94,7 +98,18 @@ int numLoops = 0;
     }];
     
     [self.audioController addFilter:looperBlock];
+    
+    [self setupUI];
 
+}
+
+-(void)setupUI{
+    self.inputOscilloscope = [[TPOscilloscopeLayer alloc] initWithAudioController:_audioController];
+    _inputOscilloscope.frame = CGRectMake(0, 0, 200, 80);
+    _inputOscilloscope.lineColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+    [self.view.layer addSublayer:_inputOscilloscope];
+    [_audioController addInputReceiver:_inputOscilloscope];
+    [_inputOscilloscope start];
 }
 
 -(IBAction)buttonPressed{
