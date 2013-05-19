@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BionicOSC.h"
 #import "AEAudioController.h"
 
 @interface ViewController ()
@@ -34,6 +35,12 @@
         NSLog(@"Error starting audio engine: %@", errorAudioSetup.localizedDescription);
     }
 
+    BionicOSCPacketListener listener;
+    UdpListeningReceiveSocket s(
+                                IpEndpointName( IpEndpointName::ANY_ADDRESS, PORT ),
+                                &listener );
+    s.RunUntilSigInt();
+    
     
     
 	// Do any additional setup after loading the view, typically from a nib.

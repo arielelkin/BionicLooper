@@ -17,10 +17,18 @@
 		B026E3C017481EF400E5178C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B026E3BF17481EF400E5178C /* Default@2x.png */; };
 		B026E3C217481EF400E5178C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B026E3C117481EF400E5178C /* Default-568h@2x.png */; };
 		B026E3C517481EF400E5178C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B026E3C317481EF400E5178C /* MainStoryboard.storyboard */; };
-		B026E3C817481EF400E5178C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B026E3C717481EF400E5178C /* ViewController.m */; };
+		B026E3C817481EF400E5178C /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B026E3C717481EF400E5178C /* ViewController.mm */; };
 		B05F88EA1748235500D3D7AB /* libTheAmazingAudioEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F88E71748233C00D3D7AB /* libTheAmazingAudioEngine.a */; };
 		B05F88ED1748235500D3D7AB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F88EB1748235500D3D7AB /* Accelerate.framework */; };
 		B05F88EE1748235500D3D7AB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F88EC1748235500D3D7AB /* AudioToolbox.framework */; };
+		F123257217482DFF00CE7F38 /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F123255517482DFF00CE7F38 /* IpEndpointName.cpp */; };
+		F123257317482DFF00CE7F38 /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F123255A17482DFF00CE7F38 /* NetworkingUtils.cpp */; };
+		F123257417482DFF00CE7F38 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F123255B17482DFF00CE7F38 /* UdpSocket.cpp */; };
+		F123257817482DFF00CE7F38 /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F123256617482DFF00CE7F38 /* OscOutboundPacketStream.cpp */; };
+		F123257917482DFF00CE7F38 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F123256917482DFF00CE7F38 /* OscPrintReceivedElements.cpp */; };
+		F123257A17482DFF00CE7F38 /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F123256B17482DFF00CE7F38 /* OscReceivedElements.cpp */; };
+		F123257B17482DFF00CE7F38 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F123256D17482DFF00CE7F38 /* OscTypes.cpp */; };
+		F123257F1748368600CE7F38 /* BionicOSC.h in Sources */ = {isa = PBXBuildFile; fileRef = F123257E1748368600CE7F38 /* BionicOSC.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +64,31 @@
 		B026E3C117481EF400E5178C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B026E3C417481EF400E5178C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		B026E3C617481EF400E5178C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B026E3C717481EF400E5178C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B026E3C717481EF400E5178C /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		B05F88E21748233C00D3D7AB /* TheAmazingAudioEngine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheAmazingAudioEngine.xcodeproj; path = TheAmazingAudioEngine/TheAmazingAudioEngine.xcodeproj; sourceTree = "<group>"; };
 		B05F88EB1748235500D3D7AB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		B05F88EC1748235500D3D7AB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F123255517482DFF00CE7F38 /* IpEndpointName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IpEndpointName.cpp; sourceTree = "<group>"; };
+		F123255617482DFF00CE7F38 /* IpEndpointName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpEndpointName.h; sourceTree = "<group>"; };
+		F123255717482DFF00CE7F38 /* NetworkingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkingUtils.h; sourceTree = "<group>"; };
+		F123255817482DFF00CE7F38 /* PacketListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketListener.h; sourceTree = "<group>"; };
+		F123255A17482DFF00CE7F38 /* NetworkingUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkingUtils.cpp; sourceTree = "<group>"; };
+		F123255B17482DFF00CE7F38 /* UdpSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UdpSocket.cpp; sourceTree = "<group>"; };
+		F123255C17482DFF00CE7F38 /* TimerListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerListener.h; sourceTree = "<group>"; };
+		F123255D17482DFF00CE7F38 /* UdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UdpSocket.h; sourceTree = "<group>"; };
+		F123256317482DFF00CE7F38 /* MessageMappingOscPacketListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageMappingOscPacketListener.h; sourceTree = "<group>"; };
+		F123256417482DFF00CE7F38 /* OscException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscException.h; sourceTree = "<group>"; };
+		F123256517482DFF00CE7F38 /* OscHostEndianness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscHostEndianness.h; sourceTree = "<group>"; };
+		F123256617482DFF00CE7F38 /* OscOutboundPacketStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OscOutboundPacketStream.cpp; sourceTree = "<group>"; };
+		F123256717482DFF00CE7F38 /* OscOutboundPacketStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscOutboundPacketStream.h; sourceTree = "<group>"; };
+		F123256817482DFF00CE7F38 /* OscPacketListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscPacketListener.h; sourceTree = "<group>"; };
+		F123256917482DFF00CE7F38 /* OscPrintReceivedElements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OscPrintReceivedElements.cpp; sourceTree = "<group>"; };
+		F123256A17482DFF00CE7F38 /* OscPrintReceivedElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscPrintReceivedElements.h; sourceTree = "<group>"; };
+		F123256B17482DFF00CE7F38 /* OscReceivedElements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OscReceivedElements.cpp; sourceTree = "<group>"; };
+		F123256C17482DFF00CE7F38 /* OscReceivedElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscReceivedElements.h; sourceTree = "<group>"; };
+		F123256D17482DFF00CE7F38 /* OscTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OscTypes.cpp; sourceTree = "<group>"; };
+		F123256E17482DFF00CE7F38 /* OscTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscTypes.h; sourceTree = "<group>"; };
+		F123257E1748368600CE7F38 /* BionicOSC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BionicOSC.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +117,7 @@
 				B026E3B117481EF300E5178C /* BionicLooper */,
 				B026E3AA17481EF300E5178C /* Frameworks */,
 				B026E3A917481EF300E5178C /* Products */,
+				F123255217482DFF00CE7F38 /* oscpack */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,7 +146,8 @@
 				B026E3BB17481EF400E5178C /* AppDelegate.m */,
 				B026E3C317481EF400E5178C /* MainStoryboard.storyboard */,
 				B026E3C617481EF400E5178C /* ViewController.h */,
-				B026E3C717481EF400E5178C /* ViewController.m */,
+				B026E3C717481EF400E5178C /* ViewController.mm */,
+				F123257E1748368600CE7F38 /* BionicOSC.h */,
 				B026E3B217481EF300E5178C /* Supporting Files */,
 			);
 			path = BionicLooper;
@@ -142,6 +173,57 @@
 				B05F88E71748233C00D3D7AB /* libTheAmazingAudioEngine.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F123255217482DFF00CE7F38 /* oscpack */ = {
+			isa = PBXGroup;
+			children = (
+				F123255417482DFF00CE7F38 /* ip */,
+				F123256217482DFF00CE7F38 /* osc */,
+			);
+			path = oscpack;
+			sourceTree = "<group>";
+		};
+		F123255417482DFF00CE7F38 /* ip */ = {
+			isa = PBXGroup;
+			children = (
+				F123255517482DFF00CE7F38 /* IpEndpointName.cpp */,
+				F123255617482DFF00CE7F38 /* IpEndpointName.h */,
+				F123255717482DFF00CE7F38 /* NetworkingUtils.h */,
+				F123255817482DFF00CE7F38 /* PacketListener.h */,
+				F123255917482DFF00CE7F38 /* posix */,
+				F123255C17482DFF00CE7F38 /* TimerListener.h */,
+				F123255D17482DFF00CE7F38 /* UdpSocket.h */,
+			);
+			path = ip;
+			sourceTree = "<group>";
+		};
+		F123255917482DFF00CE7F38 /* posix */ = {
+			isa = PBXGroup;
+			children = (
+				F123255A17482DFF00CE7F38 /* NetworkingUtils.cpp */,
+				F123255B17482DFF00CE7F38 /* UdpSocket.cpp */,
+			);
+			path = posix;
+			sourceTree = "<group>";
+		};
+		F123256217482DFF00CE7F38 /* osc */ = {
+			isa = PBXGroup;
+			children = (
+				F123256317482DFF00CE7F38 /* MessageMappingOscPacketListener.h */,
+				F123256417482DFF00CE7F38 /* OscException.h */,
+				F123256517482DFF00CE7F38 /* OscHostEndianness.h */,
+				F123256617482DFF00CE7F38 /* OscOutboundPacketStream.cpp */,
+				F123256717482DFF00CE7F38 /* OscOutboundPacketStream.h */,
+				F123256817482DFF00CE7F38 /* OscPacketListener.h */,
+				F123256917482DFF00CE7F38 /* OscPrintReceivedElements.cpp */,
+				F123256A17482DFF00CE7F38 /* OscPrintReceivedElements.h */,
+				F123256B17482DFF00CE7F38 /* OscReceivedElements.cpp */,
+				F123256C17482DFF00CE7F38 /* OscReceivedElements.h */,
+				F123256D17482DFF00CE7F38 /* OscTypes.cpp */,
+				F123256E17482DFF00CE7F38 /* OscTypes.h */,
+			);
+			path = osc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +262,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = B026E39F17481EF300E5178C;
 			productRefGroup = B026E3A917481EF300E5178C /* Products */;
@@ -229,7 +312,15 @@
 			files = (
 				B026E3B817481EF300E5178C /* main.m in Sources */,
 				B026E3BC17481EF400E5178C /* AppDelegate.m in Sources */,
-				B026E3C817481EF400E5178C /* ViewController.m in Sources */,
+				B026E3C817481EF400E5178C /* ViewController.mm in Sources */,
+				F123257217482DFF00CE7F38 /* IpEndpointName.cpp in Sources */,
+				F123257317482DFF00CE7F38 /* NetworkingUtils.cpp in Sources */,
+				F123257417482DFF00CE7F38 /* UdpSocket.cpp in Sources */,
+				F123257817482DFF00CE7F38 /* OscOutboundPacketStream.cpp in Sources */,
+				F123257917482DFF00CE7F38 /* OscPrintReceivedElements.cpp in Sources */,
+				F123257A17482DFF00CE7F38 /* OscReceivedElements.cpp in Sources */,
+				F123257B17482DFF00CE7F38 /* OscTypes.cpp in Sources */,
+				F123257F1748368600CE7F38 /* BionicOSC.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +417,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BionicLooper/BionicLooper-Prefix.pch";
-				HEADER_SEARCH_PATHS = TheAmazingAudioEngine/TheAmazingAudioEngine;
+				HEADER_SEARCH_PATHS = (
+					TheAmazingAudioEngine/TheAmazingAudioEngine,
+					"oscpack/**",
+				);
 				INFOPLIST_FILE = "BionicLooper/BionicLooper-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -338,7 +432,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BionicLooper/BionicLooper-Prefix.pch";
-				HEADER_SEARCH_PATHS = TheAmazingAudioEngine/TheAmazingAudioEngine;
+				HEADER_SEARCH_PATHS = (
+					TheAmazingAudioEngine/TheAmazingAudioEngine,
+					"oscpack/**",
+				);
 				INFOPLIST_FILE = "BionicLooper/BionicLooper-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
