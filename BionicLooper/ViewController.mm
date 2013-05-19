@@ -7,20 +7,29 @@
 //
 
 #import "ViewController.h"
-#import "BionicOSC.h"
+
 #import "AEAudioController.h"
 #import "AEPlaythroughChannel.h"
 #import "AEBlockFilter.h"
+#import "AEBlockChannel.h"
 
 #import "TPOscilloscopeLayer.h"
-
 #import "LoopIndicator.h"
+
+#import "Chorus.h"
+#import "PRCRev.h"
+
+//#import "BionicOSC.h"
 
 @interface ViewController ()
 
 @property (nonatomic) AEAudioController *audioController;
 @property (nonatomic) AEPlaythroughChannel *receiver;
 @property (nonatomic) AEBlockFilter *looperBlock;
+@property (nonatomic) AEBlockFilter *chorusBlock;
+
+@property stk::Chorus *myChorus;
+@property stk::PRCRev *myReverb;
 
 @property (nonatomic) TPOscilloscopeLayer *inputOscilloscope;
 
@@ -104,24 +113,50 @@ int numLoops = 0;
     
     [self.audioController addFilter:looperBlock];
     
+
+    self.myChorus = new stk::Chorus(400);
+    self.myChorus->setModDepth(0.4);
+    self.myChorus->setModFrequency(400);
+    self.myChorus->setEffectMix(0.3);
+    
+    self.myReverb = new stk::PRCRev();
+    self.myReverb->setEffectMix(0.3);
+    
+    
+    self.chorusBlock = [AEBlockFilter filterWithBlock:^(AEAudioControllerFilterProducer producer, void *producerToken, const AudioTimeStamp *time, UInt32 frames, AudioBufferList *audio) {
+        
+        OSStatus status = producer(producerToken, audio, &frames);
+        if ( status != noErr ) return;
+
+        
+        for (int i = 0; i<frames; i++) {
+            
+            ((float*)audio->mBuffers[0].mData)[i] += self.myReverb->tick( self.myChorus->tick(((float*)audio->mBuffers[0].mData)[i]) );
+        }
+    }];
+    
+    [self.audioController addFilter:self.chorusBlock];
+    
     [self setupUI];
     
-    // OSC RECEIVER
 
     
-    double delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        
-        BionicOSCPacketListener listener;
-        UdpListeningReceiveSocket s(
-                                    IpEndpointName( IpEndpointName::ANY_ADDRESS, PORT ),
-                                    &listener );
-        s.RunUntilSigInt();
-
-        
-    });
-    
+//    // OSC RECEIVER
+//
+//    
+//    double delayInSeconds = 2.0;
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//        
+//        BionicOSCPacketListener listener;
+//        UdpListeningReceiveSocket s(
+//                                    IpEndpointName( IpEndpointName::ANY_ADDRESS, PORT ),
+//                                    &listener );
+//        s.RunUntilSigInt();
+//
+//        
+//    });
+//    
 
 }
 
@@ -159,15 +194,28 @@ int numLoops = 0;
     
     LoopIndicator *loopOne = [[LoopIndicator alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.height, 200)];
     
-    [loopOne setCenter:CGPointMake(self.view.center.x, [[UIScreen mainScreen] bounds].size.width-CGRectGetWidth(loopOne.bounds))];
+    [loopOne setCenter:CGPointMake(loopOne.center.x, 800)];
     
-    [loopOne setBackgroundColor:[UIColor redColor]];
     [self.view addSubview:loopOne];
     
     [self.loopIndicators addObject:loopOne];
     
-//    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateLoopUI) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateLoopUI) userInfo:nil repeats:YES];
     
+    
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	// get touch event
+	UITouch *touch = [[event allTouches] anyObject];
+	CGPoint touchLocation = [touch locationInView:self.view];
+	NSLog(@"x: %0.0f, y: %0.0f", touchLocation.x, touchLocation.y);
+    
+    
+    self.myChorus->setModFrequency(touchLocation.x * 1.5);
+    self.myReverb->setT60(touchLocation.y/768);
+    
+    NSLog(@"reverb: %f", touchLocation.y/768);
     
 }
 
@@ -202,14 +250,16 @@ int numLoops = 0;
             NSLog(@"loopSize set to %d", playHead);
         }
     }
+    
     NSLog(@"Recording: %d, numLoops: %d", recording, numLoops);
-	
+    NSLog(@"playhead: %d, loopsize: %d", playHead, loopSize);
 	
 }
 
 
 -(IBAction)clearButtonHit{
 	NSLog(@"Cleared Loops!");
+    recording = false;
 	playLoop = false;
 	
 	for(int i = 0; i<MAXLOOPS; i++){
@@ -220,6 +270,7 @@ int numLoops = 0;
 	
 	numLoops = 0;
 	playHead = 0;
+    loopSize = 1000000;
     
 }
 

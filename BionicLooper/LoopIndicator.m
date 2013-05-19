@@ -30,7 +30,7 @@
         self.loopIndicator = [CALayer layer];
         [self.loopIndicator setFrame:CGRectMake(0, 0, 0, loopBackground.frame.size.height)];
         [self.loopIndicator setBackgroundColor:[UIColor redColor].CGColor];
-        [loopBackground addSublayer:self.loopIndicator];
+        [self.layer addSublayer:self.loopIndicator];
            
     }
     return self;
