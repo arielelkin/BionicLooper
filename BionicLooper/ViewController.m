@@ -13,6 +13,8 @@
 
 #import "TPOscilloscopeLayer.h"
 
+#import "LoopIndicator.h"
+
 @interface ViewController ()
 
 @property (nonatomic) AEAudioController *audioController;
@@ -20,6 +22,8 @@
 @property (nonatomic) AEBlockFilter *looperBlock;
 
 @property (nonatomic) TPOscilloscopeLayer *inputOscilloscope;
+
+@property (nonatomic) NSMutableArray *loopIndicators;
 
 @end
 
@@ -110,6 +114,31 @@ int numLoops = 0;
     [self.view.layer addSublayer:_inputOscilloscope];
     [_audioController addInputReceiver:_inputOscilloscope];
     [_inputOscilloscope start];
+    
+    
+    self.loopIndicators = [NSMutableArray array];
+    
+    LoopIndicator *loopOne = [[LoopIndicator alloc] initWithFrame:CGRectMake(0, 300, [[UIScreen mainScreen] bounds].size.height, 200)];
+    [self.view addSubview:loopOne];
+    
+    [self.loopIndicators addObject:loopOne];
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateLoopUI) userInfo:nil repeats:YES];
+    
+    
+}
+
+-(void)updateLoopUI{
+    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        LoopIndicator *l =  (LoopIndicator *) self.loopIndicators[0];
+        
+        float currentLoopPosition = ((float)playHead/(float)loopSize);
+        [l updateLoopIndicator:currentLoopPosition];
+
+//    });
+    
+    
 }
 
 -(IBAction)buttonPressed{
@@ -150,6 +179,8 @@ int numLoops = 0;
 	playHead = 0;
     
 }
+
+
 
 
 - (void)didReceiveMemoryWarning

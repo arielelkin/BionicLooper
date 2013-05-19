@@ -32,6 +32,7 @@
 		B05F8937174825B800D3D7AB /* TPCircularBuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = B05F892D174825B800D3D7AB /* TPCircularBuffer.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B05F893D1748E91B00D3D7AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F893C1748E91B00D3D7AB /* QuartzCore.framework */; };
 		B05F89401748E95F00D3D7AB /* TPOscilloscopeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B05F893F1748E95F00D3D7AB /* TPOscilloscopeLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B05F89461748EB0A00D3D7AB /* LoopIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B05F89451748EB0A00D3D7AB /* LoopIndicator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		B05F893C1748E91B00D3D7AB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B05F893E1748E95F00D3D7AB /* TPOscilloscopeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPOscilloscopeLayer.h; sourceTree = SOURCE_ROOT; };
 		B05F893F1748E95F00D3D7AB /* TPOscilloscopeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPOscilloscopeLayer.m; sourceTree = SOURCE_ROOT; };
+		B05F89441748EB0A00D3D7AB /* LoopIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoopIndicator.h; path = BionicLooper/LoopIndicator.h; sourceTree = "<group>"; };
+		B05F89451748EB0A00D3D7AB /* LoopIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoopIndicator.m; path = BionicLooper/LoopIndicator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 		B026E39F17481EF300E5178C = {
 			isa = PBXGroup;
 			children = (
+				B05F89441748EB0A00D3D7AB /* LoopIndicator.h */,
+				B05F89451748EB0A00D3D7AB /* LoopIndicator.m */,
 				B05F893C1748E91B00D3D7AB /* QuartzCore.framework */,
 				B05F891C174825B800D3D7AB /* Modules */,
 				B05F88EB1748235500D3D7AB /* Accelerate.framework */,
@@ -309,6 +314,7 @@
 				B05F8936174825B800D3D7AB /* TPCircularBuffer+AudioBufferList.c in Sources */,
 				B05F8937174825B800D3D7AB /* TPCircularBuffer.c in Sources */,
 				B05F89401748E95F00D3D7AB /* TPOscilloscopeLayer.m in Sources */,
+				B05F89461748EB0A00D3D7AB /* LoopIndicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
