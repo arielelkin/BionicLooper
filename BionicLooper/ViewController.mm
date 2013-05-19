@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BionicOSC.h"
 #import "AEAudioController.h"
 #import "AEPlaythroughChannel.h"
 #import "AEBlockFilter.h"
@@ -104,10 +105,48 @@ int numLoops = 0;
     [self.audioController addFilter:looperBlock];
     
     [self setupUI];
+    
+    // OSC RECEIVER
+
+    
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        BionicOSCPacketListener listener;
+        UdpListeningReceiveSocket s(
+                                    IpEndpointName( IpEndpointName::ANY_ADDRESS, PORT ),
+                                    &listener );
+        s.RunUntilSigInt();
+
+        
+    });
+    
 
 }
 
 -(void)setupUI{
+    
+    NSLog(@"SHOULD LOAD UI!");
+    
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    
+    
+    UIButton *loopOneButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [loopOneButton setFrame:CGRectMake(0, 0, 300, 300)];
+    [loopOneButton setTitle:@"LOOP" forState:UIControlStateNormal];
+    [loopOneButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchDown];
+    [loopOneButton setCenter:CGPointMake(self.view.center.x, 200)];
+    [self.view addSubview:loopOneButton];
+    
+    UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [clearButton setFrame:CGRectMake(0, 0, 100, 100)];
+    [clearButton setTitle:@"CLEAR" forState:UIControlStateNormal];
+    [clearButton addTarget:self action:@selector(clearButtonHit) forControlEvents:UIControlEventTouchDown];
+    [clearButton setCenter:CGPointMake(self.view.center.x, loopOneButton.center.y+250)];
+    [self.view addSubview:clearButton];
+    
+    
     self.inputOscilloscope = [[TPOscilloscopeLayer alloc] initWithAudioController:_audioController];
     _inputOscilloscope.frame = CGRectMake(0, 0, 200, 80);
     _inputOscilloscope.lineColor = [UIColor colorWithWhite:0.0 alpha:0.3];
@@ -118,12 +157,16 @@ int numLoops = 0;
     
     self.loopIndicators = [NSMutableArray array];
     
-    LoopIndicator *loopOne = [[LoopIndicator alloc] initWithFrame:CGRectMake(0, 300, [[UIScreen mainScreen] bounds].size.height, 200)];
+    LoopIndicator *loopOne = [[LoopIndicator alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.height, 200)];
+    
+    [loopOne setCenter:CGPointMake(self.view.center.x, [[UIScreen mainScreen] bounds].size.width-CGRectGetWidth(loopOne.bounds))];
+    
+    [loopOne setBackgroundColor:[UIColor redColor]];
     [self.view addSubview:loopOne];
     
     [self.loopIndicators addObject:loopOne];
     
-    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateLoopUI) userInfo:nil repeats:YES];
+//    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateLoopUI) userInfo:nil repeats:YES];
     
     
 }

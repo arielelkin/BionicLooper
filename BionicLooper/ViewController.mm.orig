@@ -1,0 +1,206 @@
+//
+//  ViewController.m
+//  BionicLooper
+//
+//  Created by Ariel Elkin on 18/05/2013.
+//  Copyright (c) 2013 ariel. All rights reserved.
+//
+
+#import "ViewController.h"
+#import "BionicOSC.h"
+#import "AEAudioController.h"
+#import "AEPlaythroughChannel.h"
+#import "AEBlockFilter.h"
+
+#import "TPOscilloscopeLayer.h"
+
+#import "LoopIndicator.h"
+
+@interface ViewController ()
+
+@property (nonatomic) AEAudioController *audioController;
+@property (nonatomic) AEPlaythroughChannel *receiver;
+@property (nonatomic) AEBlockFilter *looperBlock;
+
+@property (nonatomic) TPOscilloscopeLayer *inputOscilloscope;
+
+@property (nonatomic) NSMutableArray *loopIndicators;
+
+@end
+
+@implementation ViewController
+
+#define MAXLOOPS 5 //there can be no more than 5 loops
+#define MAXLOOPLENGTH 1000000 //loops cannot be longer than 1000000
+float loopStack[MAXLOOPS][MAXLOOPLENGTH] = { { 0 } };
+int playHead = 0;
+int loopSize = 1000000;
+bool recording = false;
+bool playLoop = false;
+int numLoops = 0;
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    //AUDIO CONTROLLER SETUP
+    self.audioController = [[AEAudioController alloc]
+                            initWithAudioDescription:[AEAudioController nonInterleavedFloatStereoAudioDescription]
+                            inputEnabled:YES
+                            ];
+
+    NSError *errorAudioSetup = NULL;
+    BOOL result = [_audioController start:&errorAudioSetup];
+    if ( !result ) {
+        NSLog(@"Error starting audio engine: %@", errorAudioSetup.localizedDescription);
+    }
+
+    
+<<<<<<< HEAD:BionicLooper/ViewController.m
+    //RECEIVER
+    self.receiver = [[AEPlaythroughChannel alloc] initWithAudioController:self.audioController];
+    [self.audioController addInputReceiver:self.receiver];
+    [self.audioController addChannels:@[self.receiver]];
+=======
+    // OSC RECEIVER
+    BionicOSCPacketListener listener;
+    UdpListeningReceiveSocket s(
+                                IpEndpointName( IpEndpointName::ANY_ADDRESS, PORT ),
+                                &listener );
+    s.RunUntilSigInt();
+    
+    //
+    
+    
+>>>>>>> b0197810a22633fa5205b9f251f5562e9c1321bf:BionicLooper/ViewController.mm
+    
+    
+    //FILTER
+    AEBlockFilter *looperBlock = [AEBlockFilter filterWithBlock:^(AEAudioControllerFilterProducer producer, void *producerToken, const AudioTimeStamp *time, UInt32 frames, AudioBufferList *audio) {
+        
+        OSStatus status = producer(producerToken, audio, &frames);
+        if ( status != noErr ) return;
+        
+        for (int i = 0; i<frames; i++) {
+            
+            if (recording) {
+                
+                loopStack[numLoops-1][playHead] = ((float *)audio->mBuffers[0].mData)[i];
+                playHead++;
+            }
+            
+            
+            if(playLoop){
+                //add everything at that point on the loopStack to what we're hearing
+                if(recording){
+                    for(int j = 0; j<numLoops; j++){
+                        ((float*)audio->mBuffers[0].mData)[i] += loopStack[0][playHead-1];
+                    }
+                    
+                } else if(!recording){
+                    for(int k = 0; k<numLoops; k++){
+                        ((float*)audio->mBuffers[0].mData)[i] += loopStack[k][playHead];
+
+                    }
+                    playHead++;
+                }
+            }
+            
+            playHead = playHead%loopSize;
+            
+            ((float*)audio->mBuffers[1].mData)[i] = ((float*)audio->mBuffers[0].mData)[i];
+            
+            
+        }
+    }];
+    
+    [self.audioController addFilter:looperBlock];
+    
+    [self setupUI];
+
+}
+
+-(void)setupUI{
+    self.inputOscilloscope = [[TPOscilloscopeLayer alloc] initWithAudioController:_audioController];
+    _inputOscilloscope.frame = CGRectMake(0, 0, 200, 80);
+    _inputOscilloscope.lineColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+    [self.view.layer addSublayer:_inputOscilloscope];
+    [_audioController addInputReceiver:_inputOscilloscope];
+    [_inputOscilloscope start];
+    
+    
+    self.loopIndicators = [NSMutableArray array];
+    
+    LoopIndicator *loopOne = [[LoopIndicator alloc] initWithFrame:CGRectMake(0, 300, [[UIScreen mainScreen] bounds].size.height, 200)];
+    [self.view addSubview:loopOne];
+    
+    [self.loopIndicators addObject:loopOne];
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateLoopUI) userInfo:nil repeats:YES];
+    
+    
+}
+
+-(void)updateLoopUI{
+    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        LoopIndicator *l =  (LoopIndicator *) self.loopIndicators[0];
+        
+        float currentLoopPosition = ((float)playHead/(float)loopSize);
+        [l updateLoopIndicator:currentLoopPosition];
+
+//    });
+    
+    
+}
+
+-(IBAction)buttonPressed{
+    
+    //start recording loop
+    if (!recording) {
+        recording = true;
+        numLoops++;
+    }
+    
+    //stop recording loop
+    else {
+        recording = false;
+        playLoop = true;
+        
+        if(numLoops == 1){
+            loopSize = playHead;
+            NSLog(@"loopSize set to %d", playHead);
+        }
+    }
+    NSLog(@"Recording: %d, numLoops: %d", recording, numLoops);
+	
+	
+}
+
+
+-(IBAction)clearButtonHit{
+	NSLog(@"Cleared Loops!");
+	playLoop = false;
+	
+	for(int i = 0; i<MAXLOOPS; i++){
+		for(int j = 0; j<MAXLOOPLENGTH; j++){
+			loopStack[i][j] = 0;
+		}
+	}
+	
+	numLoops = 0;
+	playHead = 0;
+    
+}
+
+
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

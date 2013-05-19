@@ -10,4 +10,6 @@
 
 @interface ViewController : UIViewController
 
+-(void)setupUI;
+
 @end

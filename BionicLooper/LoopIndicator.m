@@ -43,8 +43,6 @@
                                                 self.frame.size.width * value,
                                                 self.loopIndicator.frame.size.height)
          ];
-        
-        NSLog(@"should set to %f", value);
     }
     else {
         NSLog(@"loopindicator (value >= 0 && value <= 1)");
