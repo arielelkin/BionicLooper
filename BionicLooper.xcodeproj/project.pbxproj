@@ -174,6 +174,12 @@
 		B05F8AEA17490AE000D3D7AB /* Wurley.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B05F8A6317490AE000D3D7AB /* Wurley.cpp */; };
 		B05F8AEB17490AE000D3D7AB /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = B05F8A6417490AE000D3D7AB /* TODO */; };
 		B05F8AEC17490AE000D3D7AB /* VERSIONS in Resources */ = {isa = PBXBuildFile; fileRef = B05F8A6517490AE000D3D7AB /* VERSIONS */; };
+		B05F8AF017492DFF00D3D7AB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F8AED17492DFE00D3D7AB /* AssetsLibrary.framework */; };
+		B05F8AF117492DFF00D3D7AB /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F8AEE17492DFE00D3D7AB /* CoreImage.framework */; };
+		B05F8AF217492DFF00D3D7AB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F8AEF17492DFE00D3D7AB /* ImageIO.framework */; };
+		B05F8AF417492EFD00D3D7AB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F8AF317492EFD00D3D7AB /* AVFoundation.framework */; };
+		B05F8AF717492F2600D3D7AB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F8AF517492F2600D3D7AB /* CoreMedia.framework */; };
+		B05F8AF817492F2600D3D7AB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05F8AF617492F2600D3D7AB /* CoreVideo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -486,6 +492,12 @@
 		B05F8A6317490AE000D3D7AB /* Wurley.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wurley.cpp; sourceTree = "<group>"; };
 		B05F8A6417490AE000D3D7AB /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		B05F8A6517490AE000D3D7AB /* VERSIONS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSIONS; sourceTree = "<group>"; };
+		B05F8AED17492DFE00D3D7AB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		B05F8AEE17492DFE00D3D7AB /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		B05F8AEF17492DFE00D3D7AB /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		B05F8AF317492EFD00D3D7AB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B05F8AF517492F2600D3D7AB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B05F8AF617492F2600D3D7AB /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -493,6 +505,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B05F8AF717492F2600D3D7AB /* CoreMedia.framework in Frameworks */,
+				B05F8AF817492F2600D3D7AB /* CoreVideo.framework in Frameworks */,
+				B05F8AF417492EFD00D3D7AB /* AVFoundation.framework in Frameworks */,
+				B05F8AF017492DFF00D3D7AB /* AssetsLibrary.framework in Frameworks */,
+				B05F8AF117492DFF00D3D7AB /* CoreImage.framework in Frameworks */,
+				B05F8AF217492DFF00D3D7AB /* ImageIO.framework in Frameworks */,
 				B05F893D1748E91B00D3D7AB /* QuartzCore.framework in Frameworks */,
 				B05F88ED1748235500D3D7AB /* Accelerate.framework in Frameworks */,
 				B05F88EE1748235500D3D7AB /* AudioToolbox.framework in Frameworks */,
@@ -509,6 +527,12 @@
 		B026E39F17481EF300E5178C = {
 			isa = PBXGroup;
 			children = (
+				B05F8AF517492F2600D3D7AB /* CoreMedia.framework */,
+				B05F8AF617492F2600D3D7AB /* CoreVideo.framework */,
+				B05F8AF317492EFD00D3D7AB /* AVFoundation.framework */,
+				B05F8AED17492DFE00D3D7AB /* AssetsLibrary.framework */,
+				B05F8AEE17492DFE00D3D7AB /* CoreImage.framework */,
+				B05F8AEF17492DFE00D3D7AB /* ImageIO.framework */,
 				B05F897B17490ADE00D3D7AB /* MoMu-STK-1.0.0 */,
 				B05F894F1748FAC000D3D7AB /* oscpack */,
 				B05F89441748EB0A00D3D7AB /* LoopIndicator.h */,
